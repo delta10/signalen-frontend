@@ -17,6 +17,7 @@ import {
   SET_MAIN_CATEGORY,
   SET_NAME,
   SET_NOTE_KEYWORD,
+  SET_EXTRA_PROPERTIES_KEYWORD,
   SET_REFRESH,
   SET_SAVE_BUTTON_LABEL,
 } from './constants'
@@ -42,6 +43,7 @@ type Options = {
   has_changed_children: []
   maincategory_slug: Array<ExtendedCategory>
   note_keyword: string
+  extra_properties_keyword: string
   priority: Array<string>
   punctuality?: Punctuality['key']
   routing_department: Array<string>
@@ -75,6 +77,7 @@ export const initialState: FilterState = {
     has_changed_children: [],
     maincategory_slug: [],
     note_keyword: '',
+    extra_properties_keyword: '',
     priority: [],
     punctuality: undefined,
     routing_department: [],
@@ -126,6 +129,15 @@ export default (state: FilterState, action: Actions): FilterState => {
         options: {
           ...state.options,
           note_keyword: action.payload,
+        },
+      }
+
+    case SET_EXTRA_PROPERTIES_KEYWORD:
+      return {
+        ...state,
+        options: {
+          ...state.options,
+          extra_properties_keyword: action.payload,
         },
       }
 

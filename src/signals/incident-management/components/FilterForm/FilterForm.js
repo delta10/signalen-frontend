@@ -43,6 +43,7 @@ import {
   setMainCategory,
   setName,
   setNoteKeyword,
+  setExtraPropertiesKeyword,
   setRefresh,
 } from './actions'
 import {
@@ -110,6 +111,7 @@ const FilterForm = ({
     name: state.filter.name,
     address: state.options.address_text,
     note: state.options.note_keyword,
+    extraProperties: state.options.extra_properties_keyword,
   })
 
   const dataListValues = useMemo(
@@ -260,6 +262,14 @@ const FilterForm = ({
       }),
     [controlledTextInput]
   )
+  const onExtraPropertiesChange = useCallback(
+    (event) =>
+      setControlledTextInput({
+        ...controlledTextInput,
+        extraProperties: event.target?.value,
+      }),
+    [controlledTextInput]
+  )
   const onAddressChange = useCallback(
     (event) =>
       setControlledTextInput({
@@ -298,6 +308,13 @@ const FilterForm = ({
   const onNoteBlur = useCallback(
     (event) => {
       dispatch(setNoteKeyword(event.target.value))
+    },
+    [dispatch]
+  )
+
+  const onExtraPropertiesBlur = useCallback(
+    (event) => {
+      dispatch(setExtraPropertiesKeyword(event.target.value))
     },
     [dispatch]
   )
@@ -440,6 +457,23 @@ const FilterForm = ({
                 onBlur={onNoteBlur}
                 onChange={onNoteChange}
                 value={controlledTextInput.note}
+                type="text"
+              />
+            </FilterGroup>
+          </Fieldset>
+
+          <Fieldset>
+            <FilterGroup>
+              <Label htmlFor="filter_extra_properties" isGroupHeader>
+                Zoek in aanvullende antwoorden
+              </Label>
+              <Input
+                data-testid="filter-extra-properties"
+                name="extra_properties_keyword"
+                id="filter_extra_properties"
+                onBlur={onExtraPropertiesBlur}
+                onChange={onExtraPropertiesChange}
+                value={controlledTextInput.extraProperties}
                 type="text"
               />
             </FilterGroup>

@@ -13,6 +13,7 @@ import {
   SET_MAIN_CATEGORY,
   SET_NAME,
   SET_NOTE_KEYWORD,
+  SET_EXTRA_PROPERTIES_KEYWORD,
   SET_REFRESH,
 } from './constants'
 
@@ -27,6 +28,11 @@ export type SetNoteKeywordAction = {
   type: typeof SET_NOTE_KEYWORD
   payload: string
 }
+export type SetExtraPropertiesKeywordAction = {
+  type: typeof SET_EXTRA_PROPERTIES_KEYWORD
+  payload: string
+}
+
 export type SetSaveButtonLabelAction = {
   type: typeof SET_SAVE_BUTTON_LABEL
   payload: boolean
@@ -82,6 +88,7 @@ export type Actions =
   | SetAddressAction
   | SetSaveButtonLabelAction
   | SetNoteKeywordAction
+  | SetExtraPropertiesKeywordAction
   | SetCategoriesAction
   | SetDateAction
   | SetGroupOptionsAction
@@ -100,6 +107,13 @@ export const setAddress = (address: string): SetAddressAction => ({
 
 export const setNoteKeyword = (payload: string): SetNoteKeywordAction => ({
   type: SET_NOTE_KEYWORD,
+  payload,
+})
+
+export const setExtraPropertiesKeyword = (
+  payload: string
+): SetExtraPropertiesKeywordAction => ({
+  type: SET_EXTRA_PROPERTIES_KEYWORD,
   payload,
 })
 

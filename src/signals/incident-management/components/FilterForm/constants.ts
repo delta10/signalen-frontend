@@ -12,6 +12,8 @@ export const SET_MAIN_CATEGORY =
   'sia/incidentManagement/FilterForm/SET_MAIN_CATEGORY'
 export const SET_NOTE_KEYWORD =
   'sia/incidentManagement/FilterForm/SET_NOTE_KEYWORD'
+export const SET_EXTRA_PROPERTIES_KEYWORD =
+  'sia/incidentManagement/FilterForm/SET_EXTRA_PROPERTIES_KEYWORD'
 export const SET_GROUP_OPTIONS =
   'sia/incidentManagement/FilterForm/SET_GROUP_OPTIONS'
 export const DEFAULT_SUBMIT_BUTTON_LABEL = 'Filter'
