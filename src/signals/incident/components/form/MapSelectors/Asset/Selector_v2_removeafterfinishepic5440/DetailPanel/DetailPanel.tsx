@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
-import type { FC } from 'react'
 // Copyright (C) 2021 - 2023 Gemeente Amsterdam, Vereniging van Nederlandse Gemeenten
+import type { FC } from 'react'
 import { useCallback, useContext, useState } from 'react'
 
 import { ChevronLeft } from '@amsterdam/asc-assets'
@@ -11,7 +11,6 @@ import { useMediaQuery } from 'react-responsive'
 import { formatAddress } from 'shared/services/format-address'
 import type { PdokResponse } from 'shared/services/map-location'
 import { selectionIsObject } from 'signals/incident/components/form/MapSelectors/constants'
-import { closeMap } from 'signals/incident/containers/IncidentContainer/actions'
 
 import {
   Description,
@@ -27,6 +26,7 @@ import {
   DrawerOverlay,
   DrawerState,
 } from '../../../../../../../../components/DrawerOverlay'
+import { closeMap } from '../../../../../../containers/IncidentContainer/actions'
 import AssetSelectContext from '../../context'
 import Legend from '../Legend'
 import { ScrollWrapper, StyledPDOKAutoSuggest } from '../styled'
@@ -35,7 +35,6 @@ export interface DetailPanelProps {
   language?: Record<string, string>
   zoomLevel?: number
 }
-
 const DetailPanel: FC<DetailPanelProps> = ({ language, zoomLevel }) => {
   const [drawerState, setDrawerState] = useState<DrawerState>(DrawerState.Open)
   const [legendOpen, setLegendOpen] = useState(false)
@@ -43,7 +42,6 @@ const DetailPanel: FC<DetailPanelProps> = ({ language, zoomLevel }) => {
     query: breakpoint('max-width', 'tabletM')({ theme: ascDefaultTheme }),
   })
 
-  const dispatch = useDispatch()
   const {
     address,
     selection,
@@ -55,6 +53,8 @@ const DetailPanel: FC<DetailPanelProps> = ({ language, zoomLevel }) => {
   const { featureTypes } = meta
   const featureStatusTypes = meta.featureStatusTypes || []
   const addressValue = address ? formatAddress(address) : ''
+
+  const dispatch = useDispatch()
 
   const selectionOnMap =
     selection && selectionIsObject(selection[0]) ? selection : undefined
@@ -116,6 +116,7 @@ const DetailPanel: FC<DetailPanelProps> = ({ language, zoomLevel }) => {
               />
             </>
           )}
+
           {((selection && selectionOnMap) || selectableFeatures) && (
             <StyledAssetList
               selection={selection}
@@ -127,6 +128,7 @@ const DetailPanel: FC<DetailPanelProps> = ({ language, zoomLevel }) => {
               zoomLevel={zoomLevel}
             />
           )}
+
           {address && !shouldRenderMobileVersion && (
             <StyledButton
               onClick={() => dispatch(closeMap())}

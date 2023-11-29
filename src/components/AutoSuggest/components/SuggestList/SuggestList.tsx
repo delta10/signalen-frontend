@@ -130,35 +130,48 @@ const SuggestList: FC<SuggestListProps> = ({
   }
 
   return (
-    <StyledList
-      className={className}
-      data-testid="suggest-list"
-      id={id}
-      role={role}
-      ref={listRef}
-      {...rest}
-    >
-      {options.map((option) => (
-        <Li
-          id={option.id.toString()}
-          data-id={option.id}
-          key={option.id}
-          onClick={() => onSelect(option)}
-          onKeyDown={(event) => handleKeyDown(event, option)}
-          role="option"
-          tabIndex={-1}
-        >
+    <>
+      <span className="sr-only">
+        {options[0].id === 'feedbackEmpty' ? (
+          'Wij kennen dit adres niet. Probeer het opnieuw.'
+        ) : (
           <>
-            {option.id !== 'feedbackEmpty' && (
-              <StyledIcon className="chrevronIcon" size={12}>
-                <Chevron />
-              </StyledIcon>
-            )}
-            {option.value}
+            {options.length} opties beschikbaar. Gebruik de pijltoetsen omhoog
+            en omlaag om door de opties te navigeren.
           </>
-        </Li>
-      ))}
-    </StyledList>
+        )}
+      </span>
+      <StyledList
+        className={className}
+        data-testid="suggest-list"
+        id={id}
+        role={role}
+        ref={listRef}
+        {...rest}
+      >
+        {options.map((option, index) => (
+          <Li
+            id={option.id.toString()}
+            data-id={option.id}
+            key={option.id}
+            onClick={() => onSelect(option)}
+            onKeyDown={(event) => handleKeyDown(event, option)}
+            role="option"
+            aria-label={`Optie ${index + 1} ${option.value}`}
+            tabIndex={-1}
+          >
+            <>
+              {option.id !== 'feedbackEmpty' && (
+                <StyledIcon className="chrevronIcon" size={12}>
+                  <Chevron />
+                </StyledIcon>
+              )}
+              <span aria-hidden={true}>{option.value}</span>
+            </>
+          </Li>
+        ))}
+      </StyledList>
+    </>
   )
 }
 

@@ -316,9 +316,12 @@ const Selector: FC = () => {
                 />
                 <InputGroup>
                   {!showList && (
-                    <StyledLabel htmlFor="pdokautosuggest">
-                      {meta?.language?.pdokLabel || 'Zoek op adres of postcode'}
-                    </StyledLabel>
+                    <>
+                      <StyledLabel htmlFor="pdokautosuggest">
+                        {meta?.language?.pdokLabel ||
+                          'Zoek op adres of postcode'}
+                      </StyledLabel>
+                    </>
                   )}
 
                   <StyledPDOKAutoSuggest
