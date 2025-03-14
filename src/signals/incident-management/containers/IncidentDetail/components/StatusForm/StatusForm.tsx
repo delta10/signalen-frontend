@@ -38,6 +38,7 @@ import {
   StyledParagraph,
   StyledSection,
 } from './styled'
+import RelatedSignalsNotification from '../../../../../related-incidents/components/RelatedSignalsNotification'
 import { PATCH_TYPE_STATUS } from '../../constants'
 import IncidentDetailContext from '../../context'
 import type { EmailTemplate, IncidentChild } from '../../types'
@@ -299,6 +300,12 @@ const StatusForm: FunctionComponent<StatusFormProps> = ({
               )}
             </StyledAlert>
           ))}
+
+        {configuration.featureFlags.enableLinkedSignals && (
+          <StyledSection>
+            <RelatedSignalsNotification incident={incident} />
+          </StyledSection>
+        )}
 
         <fieldset>
           <StyledLegend>Versturen</StyledLegend>
