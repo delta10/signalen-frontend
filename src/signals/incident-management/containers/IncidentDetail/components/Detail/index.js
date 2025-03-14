@@ -95,7 +95,9 @@ const Detail = ({ context }) => {
         {location && <Location location={location} />}
 
         {showArea && (
-          <Area count={context.near.signal_count} id={incident.id} />
+          <>
+            <Area count={context.near.signal_count} id={incident.id} />
+          </>
         )}
 
         {memoIncident.extra_properties && (

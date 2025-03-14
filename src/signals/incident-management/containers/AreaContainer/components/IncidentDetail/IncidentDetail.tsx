@@ -8,8 +8,10 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import BackLink from 'components/BackLink'
+import configuration from 'shared/services/configuration/configuration'
 import { string2date, string2time } from 'shared/services/string-parser'
 import { isStatusEnd } from 'signals/incident-management/definitions/statusList'
+import LinkUnlinkButton from 'signals/related-incidents/components/LinkUnlinkButton'
 import type { Incident } from 'types/api/incident'
 import type { StatusCode } from 'types/status-code'
 
@@ -139,6 +141,10 @@ const IncidentDetail: React.FC<IncidentDetailProps> = ({
           </span>
         </SectionDescription>
       </DefinitionList>
+
+      {configuration.featureFlags.enableLinkedSignals && (
+        <LinkUnlinkButton incident={incident} />
+      )}
     </Wrapper>
   )
 }

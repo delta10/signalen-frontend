@@ -4,6 +4,7 @@ import { Link as AscLink } from '@amsterdam/asc-ui'
 import { Link } from 'react-router-dom'
 
 import { INCIDENT_URL } from 'signals/incident-management/routes'
+import RelatedSignalsCount from 'signals/related-incidents/components/RelatedSignalsCount'
 
 const Area: React.FC<{ count: number; id: number }> = ({ count, id }) => (
   <>
@@ -16,6 +17,7 @@ const Area: React.FC<{ count: number; id: number }> = ({ count, id }) => (
       >
         {count} {count === 1 ? 'melding' : 'meldingen'} in deze omgeving
       </AscLink>
+      <RelatedSignalsCount id={id} />
     </dd>
   </>
 )
