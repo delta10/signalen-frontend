@@ -164,6 +164,10 @@
         "showContactEdit": {
           "description": "Shows the contact edit and cancel button and form in the backoffice.",
           "type": "boolean"
+        },
+        "enableLinkedSignals": {
+          "description": "Enable linking signals.",
+          "type": "boolean"
         }
       },
       "required": [
