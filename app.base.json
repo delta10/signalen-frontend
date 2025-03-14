@@ -28,7 +28,8 @@
     "showThorButton": false,
     "showVulaanControls": false,
     "useProjectenSignalType": false,
-    "useProjectverzoekSignalType": false
+    "useProjectverzoekSignalType": false,
+    "enableLinkedSignals": false
   },
   "head": {
     "androidIcon": "/icon_192x192.png",

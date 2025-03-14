@@ -176,6 +176,10 @@
         "enableSortAndFilterStadsdeel": {
           "description": "Enable sorting and filter based on hardcoded stadsdelen",
           "type": "boolean"
+        },
+        "enableLinkedSignals": {
+          "description": "Enable linking signals.",
+          "type": "boolean"
         }
       },
       "required": [
