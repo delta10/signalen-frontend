@@ -43,7 +43,13 @@ const RelatedSignalsNotification: React.FC<RelatedSignalsNotificationProps> = ({
       <div>
         Er {getRelatedSignalsData.length == 1 ? 'is' : 'zijn'}{' '}
         {getRelatedSignalsData.length} gekoppelde{' '}
-        {getRelatedSignalsData.length == 1 ? 'melding' : 'meldingen'}.
+        {getRelatedSignalsData.length == 1 ? 'melding' : 'meldingen'}:{' '}
+        {getRelatedSignalsData.map((signal: any, index: number) => (
+          <span key={signal.id}>
+            <a href={`/manage/incident/${signal.id}`}>{signal.id}</a>
+            {index < getRelatedSignalsData.length - 1 && ', '}
+          </span>
+        ))}
       </div>
     </StyledFieldset>
   )
