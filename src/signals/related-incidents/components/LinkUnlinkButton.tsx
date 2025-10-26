@@ -52,6 +52,10 @@ const LinkUnlinkButton: React.FC<LinkUnlinkButtonProps> = ({ incident }) => {
     return null
   }
 
+  if (incident?.status?.state == 'o' || incident?.status?.state == 'a') {
+    return null
+  }
+
   const isRelated =
     getRelatedSignalsData &&
     getRelatedSignalsData.length > 0 &&
