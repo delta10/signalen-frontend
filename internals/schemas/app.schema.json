@@ -563,7 +563,7 @@
         },
         "responseType": {
           "description": "oAuth2 `response_type` service parameter value",
-          "enum": ["token", "id_token", "code"]
+          "enum": ["token", "id_token", "code", "id_token token"]
         },
         "scope": {
           "description": "oAuth2 `scope` service parameter value",
